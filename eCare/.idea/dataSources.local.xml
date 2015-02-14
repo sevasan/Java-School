@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - eCare_DB@localhost" uuid="06d72862-7953-42b7-8e9e-b3c68451bb6e">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>ecare_db.*</schema-pattern>
+      <default-schemas>ecare_db.*</default-schemas>
+    </data-source>
+  </component>
+</project>
