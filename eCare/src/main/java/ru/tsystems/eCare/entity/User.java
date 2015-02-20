@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "users", catalog = "eCare")
-public class UserEntity implements Serializable {
+public class User implements Serializable {
     private Integer userID;
     private String userName;
     private String userLastName;
