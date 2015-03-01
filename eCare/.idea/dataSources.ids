@@ -24,6 +24,7 @@
       <foreign-key name="contracts_ibfk_1" columns="id_client_contracts" ref-table="users" ref-schema="" ref-catalog="ecare_db" ref-columns="id_users" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="contracts_ibfk_2" columns="id_plan_contracts" ref-table="plans" ref-schema="" ref-catalog="ecare_db" ref-columns="id_plans" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="contract_options_ibfk_1" table="contract_options" schema="" catalog="ecare_db" columns="id_contract"/>
+      <index name="unique_phoneNumber_contracts" unique="true" columns="phoneNumber_contracts"/>
     </table>
     <table name="incompatible_options" schema="" catalog="ecare_db" type="TABLE">
       <column name="id_src_option" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -84,6 +85,7 @@
       <primary-key name="PRIMARY" columns="id_users"/>
       <foreign-key name="users_ibfk_1" columns="role_users" ref-table="roles" ref-schema="" ref-catalog="ecare_db" ref-columns="id_roles" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="contracts_ibfk_1" table="contracts" schema="" catalog="ecare_db" columns="id_client_contracts"/>
+      <index name="unique_email_users" unique="true" columns="email_users"/>
     </table>
   </data-source>
 </component>

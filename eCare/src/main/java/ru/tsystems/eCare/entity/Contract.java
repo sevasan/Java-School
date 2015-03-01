@@ -16,7 +16,7 @@ public class Contract implements Serializable{
     @Column(name = "id_contracts")
     private long contractID;
 
-    @Column(name = "phoneNumber_contracts")
+    @Column(name = "phoneNumber_contracts", unique = true)
     private String phonenumber;
 
     @Column(name = "isBlockedByClient_contracts")
