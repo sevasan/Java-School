@@ -12,7 +12,7 @@ import java.util.List;
  * Created by sevasan on 2/22/2015.
  */
 public class UserDAOImpl implements UserDAO {
-    private static EntityManager manager = DAOFactory.manager;
+    private static EntityManager manager = DAOFactory.getEntityManager();
 
     @Override
     public User create(User entity) {

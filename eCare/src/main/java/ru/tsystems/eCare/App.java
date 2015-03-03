@@ -38,7 +38,7 @@ public class App {
 //        user.setUserPassword("secret");
 //
 //        UserDAO userDAO = new UserDAOImpl();
-//        userDAO.create(user);
+//        userDAO.createFactory(user);
 
         UserService userService = new UserServiceImpl();
         List<String> userList = userService.getAllUsersShort();

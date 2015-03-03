@@ -12,4 +12,8 @@
         <servlet-name>UserListServlet</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>ru.tsystems.eCare.controller.MyEntityManagerFactory</listener-class>
+    </listener>
 </web-app>

@@ -12,7 +12,7 @@ import java.util.List;
  * Created by sevasan on 2/23/2015.
  */
 public class RoleDAOImpl implements RoleDAO {
-    private static EntityManager manager = DAOFactory.manager;
+    private static EntityManager manager = DAOFactory.getEntityManager();
 
     @Override
     public Role create(Role entity) {

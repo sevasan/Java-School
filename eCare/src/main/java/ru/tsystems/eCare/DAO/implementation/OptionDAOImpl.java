@@ -12,7 +12,7 @@ import java.util.List;
  * Created by sevasan on 2/23/2015.
  */
 public class OptionDAOImpl implements OptionDAO {
-    private static EntityManager manager = DAOFactory.manager;
+    private static EntityManager manager = DAOFactory.getEntityManager();
 
     @Override
     public Option create(Option entity) {
