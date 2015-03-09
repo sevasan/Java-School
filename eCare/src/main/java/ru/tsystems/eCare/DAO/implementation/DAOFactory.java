@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
  */
 public class DAOFactory {
     private static EntityManagerFactory factory;
-    private static EntityManager manager;
+//    private static EntityManager manager;
 
     public static void createFactory() {
         factory = Persistence.createEntityManagerFactory("eCareDB");
@@ -24,12 +24,12 @@ public class DAOFactory {
         if (factory == null) {
             throw new IllegalStateException("Context is not initialized yet.");
         }
-
-        manager = factory.createEntityManager();
-        return manager;
+        return factory.createEntityManager();
+//        manager = factory.createEntityManager();
+//        return manager;
     }
 
-    public static EntityManager getEntityManager() {
-        return manager;
-    }
+//    public static EntityManager getEntityManager() {
+//        return manager;
+//    }
 }

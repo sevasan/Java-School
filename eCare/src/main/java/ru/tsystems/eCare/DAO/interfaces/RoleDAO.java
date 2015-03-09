@@ -2,6 +2,7 @@ package ru.tsystems.eCare.DAO.interfaces;
 
 import ru.tsystems.eCare.entity.Role;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**

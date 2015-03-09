@@ -12,7 +12,12 @@ import java.util.List;
  * Created by sevasan on 2/22/2015.
  */
 public class UserDAOImpl implements UserDAO {
-    private static EntityManager manager = DAOFactory.getEntityManager();
+//    private static EntityManager manager = DAOFactory.getEntityManager();
+    private static EntityManager manager;
+
+    public UserDAOImpl(EntityManager manager) {
+        this.manager = manager;
+    }
 
     @Override
     public User create(User entity) {
@@ -30,8 +35,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        Query query = manager.createNamedQuery("User.findAll");
-        return query.getResultList();
+        return manager.createNamedQuery("User.findAll").getResultList();
     }
 
     @Override
@@ -63,19 +67,17 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(long id) {
         return manager.find(User.class, id);
     }
 
     @Override
-    public List<User> findByName(String name) {
-        return manager.createQuery("select r from User r where r.userName = :name").setParameter("name", name)
-                .getResultList();
-    }
-
-    @Override
-    public List<User> findByNameAndLastName(String name, String lastname) {
-        return manager.createQuery("select r from User r where r.userName = :name and r.userLastName = :lastname")
-                .setParameter("name", name).setParameter("lastname", lastname).getResultList();
+    public User findByEmail(String email) {
+        List<User> result = manager.createQuery("select u from User u where u.userEmail = :email").setParameter
+                ("email", email).getResultList();
+        if (result.size() != 0) {
+            return result.get(0);
+        }
+        return null;
     }
 }

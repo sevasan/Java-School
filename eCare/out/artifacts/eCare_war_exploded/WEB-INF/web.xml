@@ -3,17 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <welcome-file-list>
+        <welcome-file>LoginPage.jsp</welcome-file>
+    </welcome-file-list>
+
     <servlet>
-        <servlet-name>UserListServlet</servlet-name>
-        <servlet-class>ru.tsystems.eCare.controller.UserListServlet</servlet-class>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>ru.tsystems.eCare.controller.DeleteUserServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>UserListServlet</servlet-name>
-        <url-pattern>/list</url-pattern>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/secure/delete</url-pattern>
     </servlet-mapping>
-
-    <listener>
-        <listener-class>ru.tsystems.eCare.controller.MyEntityManagerFactory</listener-class>
-    </listener>
 </web-app>

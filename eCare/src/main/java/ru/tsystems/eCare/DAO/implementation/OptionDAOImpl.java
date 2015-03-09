@@ -12,8 +12,12 @@ import java.util.List;
  * Created by sevasan on 2/23/2015.
  */
 public class OptionDAOImpl implements OptionDAO {
-    private static EntityManager manager = DAOFactory.getEntityManager();
+//    private static EntityManager manager = DAOFactory.getEntityManager();
+    private static EntityManager manager;
 
+    public OptionDAOImpl(EntityManager manager) {
+        this.manager = manager;
+    }
     @Override
     public Option create(Option entity) {
         EntityTransaction transaction = manager.getTransaction();
@@ -63,7 +67,7 @@ public class OptionDAOImpl implements OptionDAO {
     }
 
     @Override
-    public Option findById(int id) {
+    public Option findById(long id) {
         return manager.find(Option.class, id);
     }
 }

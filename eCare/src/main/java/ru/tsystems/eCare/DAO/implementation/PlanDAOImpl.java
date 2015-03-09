@@ -12,8 +12,12 @@ import java.util.List;
  * Created by sevasan on 2/23/2015.
  */
 public class PlanDAOImpl implements PlanDAO {
-    private static EntityManager manager = DAOFactory.getEntityManager();
+//    private static EntityManager manager = DAOFactory.getEntityManager();
+    private static EntityManager manager;
 
+    public PlanDAOImpl(EntityManager manager) {
+        this.manager = manager;
+    }
     @Override
     public Plan create(Plan entity) {
         EntityTransaction transaction = manager.getTransaction();
@@ -63,7 +67,7 @@ public class PlanDAOImpl implements PlanDAO {
     }
 
     @Override
-    public Plan findById(int id) {
+    public Plan findById(long id) {
         return manager.find(Plan.class, id);
     }
 }

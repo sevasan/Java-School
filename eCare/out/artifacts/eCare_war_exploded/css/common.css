@@ -1,0 +1,158 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#wrapper {
+    min-height: 100%;
+    background-color: #fff;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+header {
+    height: 80px;
+    background-color: #1F8E94;
+}
+header #go-to-cabinet {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    float: left;
+    margin: 15px 0 0 20px;
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    float: right;
+    margin: 15px 0 0 20px;
+}
+header h1 {
+    color: #fff;
+    font-size: 24px;
+    float: left;
+    margin: 15px 0 0 20px;
+}
+nav {
+    height: 40px;
+    background-color: #ACEBEE;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+nav > ul {
+    margin: 0 0 0 20px;
+}
+nav ul li {
+    float: left;
+    border-right: 1px solid #1D8287;
+    list-style-type: none;
+    position: relative;
+}
+nav ul li:last-child {
+    border-right: 0;
+}
+nav ul li a {
+    display: block;
+    color: #146165;
+    padding: 11px 10px;
+}
+nav ul li a:hover {
+    background-color: #F1BD17;
+    color: #000;
+}
+nav ul li .inner-menu {
+    display: none;
+    position: absolute;
+    width: 150px;
+    background-color: #F1BD17;
+    left: -1px;
+}
+nav ul li:hover .inner-menu {
+    display: block;
+}
+#content {
+    margin-top: 30px;
+}
+.content-wrap {
+    padding: 10px;
+}
+#login-section {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
+#error-page {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    text-align: center;
+}
+.error{
+    display: none;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px;
+    color: #d8000c;
+    background-color: #ffbaba
+}
+.error-border{
+    border: 2px solid #d8000c;
+}
+#page-content {
+    float: left;
+    width: 70%;
+    margin-right: 5%;
+    min-height: 300px;
+}
+#page-content .content-wrap {
+    padding-left: 30px;
+}
+#page-content h1 {
+    margin: 0 0 10px;
+}
+.form-element {
+    margin: 5px 0;
+}
+
+.form-element label {
+    float: left;
+    /*text-align: right;*/
+    width: 110px;
+}
+input[type="submit"] {
+    background: #1F8E94;
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+aside {
+    float: right;
+    width: 25%;
+    min-height: 300px;
+    background: #ddd;
+}
+aside h3 {
+    margin: 0 0 10px;
+}
+.list {
+    list-style: square outside;
+}
+#empty-div {
+    height: 20px;
+    clear: both;
+}
+footer {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    margin-top: -50px;
+    clear: both;
+    background-color: #ccc;
+}

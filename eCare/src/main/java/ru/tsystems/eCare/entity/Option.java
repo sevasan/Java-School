@@ -78,5 +78,4 @@ public class Option implements Serializable {
     public void setIncompatibleOptions(Set<Option> incompatibleOptions) {
         this.incompatibleOptions = incompatibleOptions;
     }
-
 }
