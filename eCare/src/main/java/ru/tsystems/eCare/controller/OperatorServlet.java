@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Implements Front Controller pattern.
@@ -64,9 +65,10 @@ public class OperatorServlet extends HttpServlet {
         String result = null;
 
         //OH GOD FIX THAT MESS PLZ MAH EYES
+        session.setAttribute("optionView", "false");
         if (query.equals("ContractList")) {
             List<Contract> contracts = operatorService.findAllContracts();
-            session.setAttribute("ContractList", contracts);
+            session.setAttribute("contractList", contracts);
             result = "/secure/operator/ContractList.jsp";
         } else if (query.equals("PlanList")) {
             List<Plan> plans = operatorService.findAllPlans();
@@ -91,6 +93,38 @@ public class OperatorServlet extends HttpServlet {
 
             List<Option> options = operatorService.findAllOptions();
             session.setAttribute("OptionList", options);
+            result = "/secure/operator/OptionList.jsp";
+        } else if (query.equals("DeleteOption")) {
+            long id = Long.parseLong(request.getParameter("optionID"));
+
+            operatorService.removeOption(id);
+
+            List<Option> options = operatorService.findAllOptions();
+            session.setAttribute("OptionList", options);
+            result = "/secure/operator/OptionList.jsp";
+        } else if (query.equals("ViewOption")) {
+            long id = Long.parseLong(request.getParameter("optionID"));
+
+            session.setAttribute("currentOption", operatorService.findOptionByID(id));
+            session.setAttribute("optionView", "true");
+            result = "/secure/operator/OptionList.jsp";
+        } else if (query.equals("AddReqOption")) {
+            long optionID = Long.parseLong(request.getParameter("optionID"));
+            String reqOptionTitle = request.getParameter("reqOptionTitle");
+
+            Option option = operatorService.findOptionByID(optionID);
+            Option reqOption = operatorService.findOptionByTitle(reqOptionTitle);
+
+            session.setAttribute("reqOptionNotFound", "false");
+            if (reqOption != null) {
+                operatorService.addRequiredOption(optionID, reqOption.getOptionID());
+                option.addRequiredOption(reqOption);
+            } else {
+                session.setAttribute("reqOptionNotFound", "true");
+            }
+
+            session.setAttribute("currentOption", option);
+            session.setAttribute("optionView", "true");
             result = "/secure/operator/OptionList.jsp";
         } else if (query.equals("AddClient")) {
             User user = new User();

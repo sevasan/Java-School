@@ -29,6 +29,7 @@ public interface OperatorService {
     public User findUserByNumber(String number);
     public User findUserByEmail(String email);
     public Option findOptionByID(long id);
+    public Option findOptionByTitle(String title);
     public Plan findPlanByID(long id);
     public Contract findContractByID(long id);
 
@@ -71,9 +72,15 @@ public interface OperatorService {
      */
 
     public void addRequiredOption(long optionID, long reqOptionID);
-    public void removeRequireOption(long optionID, long reqOptionID);
+    public void removeRequiredOption(long optionID, long reqOptionID);
     public void addIncompatibleOption(long optionID, long incOptionID);
     public void removeIncompatibleOption(long optionID, long incOptionID);
+
+    /**
+     * Modify option.
+     */
+
+    public void removeOption(long id);
 
     /**
      * Modify client.

@@ -11,6 +11,8 @@
 <head>
     <title>Options menu</title>
     <link type="text/css" rel="stylesheet" href="<c:url value='../../css/common.css'/>"/>
+    <script type="text/javascript" src="<c:url value='/js/jquery-1.11.2.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/js/option-list-modify.js'/>"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -58,6 +60,16 @@
                             <td>${option.getOptionTitle()}</td>
                             <td>${option.getOptionPrice()}</td>
                             <td>${option.getOptionActivationPrice()}</td>
+                            <td><a
+                                    href="<c:url
+                                    value='/secure/operator/operator?q=DeleteOption&optionID=${option.getOptionID()}'
+                                    />">delete</a>
+                            </td>
+                            <td><a id="modify${option.getOptionID()}" href="<c:url
+                            value='/secure/operator/operator?q=ViewOption&optionID=${option.getOptionID()}'/>">modify
+                            </a>
+                                <input type="hidden" id="option-view-trigger" value="${optionView}"/>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -85,6 +97,53 @@
             </div>
         </aside>
     </section>
+</div>
+<div id="overlay"></div>
+<div class="modal-dialog">
+    <a id="modify-close" href="#">close</a>
+    <c:choose>
+        <c:when test="${currentOption != null}">
+            <input type="hidden" name="optionID" value="${currentOption}"/>
+            <table>
+                <c:forEach var="reqOption" items="${currentOption.getRequiredOptions()}">
+                    <tr>
+                        <td>
+                            ${reqOption.getOptionTitle()}
+                        </td>
+                        <td>
+                            <a
+                                    href="<c:url value='/secure/operator/operator?q=RemoveReqOption&reqOptionID
+                                    =${reqOption.getOptionID()}'/>">delete</a>
+                            <%--<c:choose>--%>
+                                <%--<c:when test="${currentOption.getRequiredOptions().contains(reqOption)}">--%>
+                                    <%--<input type="checkbox" id="box${reqOption.getOptionID()}"--%>
+                                               <%--name="required-option" value="${reqOption.getOptionID()}"--%>
+                                               <%--checked="checked">--%>
+                                <%--</c:when>--%>
+                                <%--<c:otherwise>--%>
+                                    <%--<input type="checkbox" id="box${reqOption.getOptionID()}"--%>
+                                           <%--name="required-option" value="${reqOption.getOptionID()}">--%>
+                                <%--</c:otherwise>--%>
+                            <%--</c:choose>--%>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <form id="add-req-option" method="post" action="<c:url
+            value='/secure/operator/operator?q=AddReqOption&optionID=${currentOption.getOptionID()}'/>">
+                <div class="form-element">
+                    <input type="text" placeholder="Title" id="reqOptionTitle" name="reqOptionTitle">
+                </div>
+                <div class="form-element">
+                    <input type="submit" value="Add">
+                </div>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <br>
+            empty
+        </c:otherwise>
+    </c:choose>
 </div>
 <footer></footer>
 </body>

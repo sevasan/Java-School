@@ -70,4 +70,15 @@ public class OptionDAOImpl implements OptionDAO {
     public Option findById(long id) {
         return manager.find(Option.class, id);
     }
+
+    @Override
+    public Option findByTitle(String title) {
+        List<Option> result = manager.createQuery("select o from Option o where o.optionTitle =:title").setParameter
+                ("title", title).getResultList();
+        if (result.size() != 0) {
+            return result.get(0);
+        }
+
+        return null;
+    }
 }

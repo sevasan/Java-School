@@ -53,7 +53,7 @@
                         <td>Email</td>
                         <td>Plan</td>
                     </tr>
-                    <c:forEach var="contract" items="${ContractList}">
+                    <c:forEach var="contract" items="${contractList}">
                         <tr>
                             <td>${contract.getPhonenumber()}</td>
                             <td>${option.getClient().getUserEmail()}</td>
